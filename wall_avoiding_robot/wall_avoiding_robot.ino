@@ -22,7 +22,7 @@ void loop()
   Serial.print(distance);
   Serial.println(" mm");
   delay(1000);
-  int speed = distance*5.5;
+  int speed = distance;
   if (speed >= 0 && speed <= 255)
   {
     analogWrite(rightMotorPin, speed);
