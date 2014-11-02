@@ -2,6 +2,7 @@ char incomingByte = 0;   // for incoming serial data
 char one = 1;
 char zero = 0;
 int controlPin = 7;
+int switchPin = 13;
 
 void setup() {
   Serial.begin(9600);     // opens serial port, sets data rate to 9600 bps
@@ -30,5 +31,14 @@ void loop() {
                 Serial.print("I received: ");
                 Serial.println(incomingByte, DEC);
         }
+        
+         if (digitalRead(switchPin) == LOW)
+         { 
+         digitalWrite(controlPin, LOW);
+         } 
+         else
+         {
+         digitalWrite(controlPin, HIGH);
+         }
 }
  
