@@ -4,17 +4,26 @@
  * Created: 11/8/2014 7:36:49 PM
  * Author: amate_000
  */ 
+#include "Direction.h"
+#include "PinRegistry.h"
+
+Direction direction;
+bool bool1 = true;
+bool bool2 = false;
 
 void setup()
 {
-
-	  /* add setup code here, setup code runs once when the processor starts */
-
+	pinMode(PinRegistry::PWM_R, OUTPUT);
+	pinMode(PinRegistry::PWM_L, OUTPUT);
 }
 
 void loop()
 {
-
-	  /* add main program code here, this code starts again each time it ends */
-
+	direction.forward();
+	delay(2000);
+	direction.stop();
+	delay(1000);
+	direction.turnAround(bool1, bool2);
+	bool1=!bool1;
+	bool2=!bool2;
 }

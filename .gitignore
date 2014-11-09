@@ -4,6 +4,8 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+wall_avoiding_robot/Robot2.0/Main/Debug/*
+wall_avoiding_robot/Robot2.0/Main/Visual Micro/*
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
