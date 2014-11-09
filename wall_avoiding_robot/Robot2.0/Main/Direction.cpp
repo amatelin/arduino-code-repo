@@ -55,7 +55,7 @@ void Direction::turnAround(bool right, bool left)
 		analogWrite(PinRegistry::PWM_R, this->globalSpeed);
 		stop(false, true);
 		analogWrite(PinRegistry::PWM_L, 0);
-		delay(Direction::UTURN_TIME);
+		//delay(Direction::UTURN_TIME);
 		//
 	}
 	
@@ -64,7 +64,7 @@ void Direction::turnAround(bool right, bool left)
 		forward();
 		analogWrite(PinRegistry::PWM_L, this->globalSpeed);
 		analogWrite(PinRegistry::PWM_R, 0);
-		delay(Direction::UTURN_TIME);
+		//delay(Direction::UTURN_TIME);
 		//forward();
 	}
 }

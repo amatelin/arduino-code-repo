@@ -18,6 +18,9 @@ class PinRegistry {
 		static const int PWM_L = 6;
 		static const int IN1_L = 9;
 		static const int IN2_L = 10;
+		
+		static const int DIST_TRIG = 2;
+		static const int DIST_ECHO = 3;
 };
 
 
