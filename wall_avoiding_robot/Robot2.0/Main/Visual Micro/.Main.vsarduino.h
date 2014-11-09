@@ -23,7 +23,3 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\wall_avoiding_robot\Robot2.0\Main\Main.ino"
-#include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\wall_avoiding_robot\Robot2.0\Main\Direction.cpp"
-#include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\wall_avoiding_robot\Robot2.0\Main\Direction.h"
-#include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\wall_avoiding_robot\Robot2.0\Main\IncFile1.h"
-#include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\wall_avoiding_robot\Robot2.0\Main\PinRegistry.h"
