@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>Main</AssemblyName>
-    <Name>Main</Name>
+    <Name>Robot</Name>
     <RootNamespace>Main</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
@@ -28,38 +28,38 @@
     <preserveEEPROM>true</preserveEEPROM>
     <AsfFrameworkConfig>
       <framework-data>
-  <options>
-    <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
-  </options>
-  <configurations />
-  <files>
-    <file path="src/main.c" framework="" version="" source="common/applications/user_application/main.c" changed="False" content-id="Atmel.ASF" />
-    <file path="src/config/conf_board.h" framework="" version="" source="common/applications/user_application/user_board/config/conf_board.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/boards/board.h" framework="" version="" source="common/boards/board.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/boards/user_board/init.c" framework="" version="" source="common/boards/user_board/init.c" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/boards/user_board/user_board.h" framework="" version="" source="common/boards/user_board/user_board.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/utils/interrupt.h" framework="" version="" source="common/utils/interrupt.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/utils/interrupt/interrupt_avr8.h" framework="" version="" source="common/utils/interrupt/interrupt_avr8.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/utils/make/Makefile.avr.in" framework="" version="" source="common/utils/make/Makefile.avr.in" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/common/utils/parts.h" framework="" version="" source="common/utils/parts.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/assembler.h" framework="" version="" source="mega/utils/assembler.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/assembler/gas.h" framework="" version="" source="mega/utils/assembler/gas.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/compiler.h" framework="" version="" source="mega/utils/compiler.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/preprocessor/mrepeat.h" framework="" version="" source="mega/utils/preprocessor/mrepeat.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/preprocessor/preprocessor.h" framework="" version="" source="mega/utils/preprocessor/preprocessor.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/preprocessor/stringz.h" framework="" version="" source="mega/utils/preprocessor/stringz.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/preprocessor/tpaste.h" framework="" version="" source="mega/utils/preprocessor/tpaste.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/progmem.h" framework="" version="" source="mega/utils/progmem.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/mega/utils/status_codes.h" framework="" version="" source="mega/utils/status_codes.h" changed="False" content-id="Atmel.ASF" />
-  </files>
-  <documentation help="http://asf.atmel.com/docs/3.19.0/common.applications.user_application.user_board.mega/html/index.html" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.19.0" />
-  </dependencies>
-  <project id="common.applications.user_application.user_board.mega" value="Add" config="" content-id="Atmel.ASF" />
-  <board id="board.user_board.mega" value="Add" config="" content-id="Atmel.ASF" />
-</framework-data>
+        <options>
+          <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
+        </options>
+        <configurations />
+        <files>
+          <file path="src/main.c" framework="" version="" source="common/applications/user_application/main.c" changed="False" content-id="Atmel.ASF" />
+          <file path="src/config/conf_board.h" framework="" version="" source="common/applications/user_application/user_board/config/conf_board.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/boards/board.h" framework="" version="" source="common/boards/board.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/boards/user_board/init.c" framework="" version="" source="common/boards/user_board/init.c" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/boards/user_board/user_board.h" framework="" version="" source="common/boards/user_board/user_board.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/utils/interrupt.h" framework="" version="" source="common/utils/interrupt.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/utils/interrupt/interrupt_avr8.h" framework="" version="" source="common/utils/interrupt/interrupt_avr8.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/utils/make/Makefile.avr.in" framework="" version="" source="common/utils/make/Makefile.avr.in" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/common/utils/parts.h" framework="" version="" source="common/utils/parts.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/assembler.h" framework="" version="" source="mega/utils/assembler.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/assembler/gas.h" framework="" version="" source="mega/utils/assembler/gas.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/compiler.h" framework="" version="" source="mega/utils/compiler.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/preprocessor/mrepeat.h" framework="" version="" source="mega/utils/preprocessor/mrepeat.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/preprocessor/preprocessor.h" framework="" version="" source="mega/utils/preprocessor/preprocessor.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/preprocessor/stringz.h" framework="" version="" source="mega/utils/preprocessor/stringz.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/preprocessor/tpaste.h" framework="" version="" source="mega/utils/preprocessor/tpaste.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/progmem.h" framework="" version="" source="mega/utils/progmem.h" changed="False" content-id="Atmel.ASF" />
+          <file path="src/ASF/mega/utils/status_codes.h" framework="" version="" source="mega/utils/status_codes.h" changed="False" content-id="Atmel.ASF" />
+        </files>
+        <documentation help="http://asf.atmel.com/docs/3.19.0/common.applications.user_application.user_board.mega/html/index.html" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.19.0" />
+        </dependencies>
+        <project id="common.applications.user_application.user_board.mega" value="Add" config="" content-id="Atmel.ASF" />
+        <board id="board.user_board.mega" value="Add" config="" content-id="Atmel.ASF" />
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -79,7 +79,6 @@
             <Value>F_CPU=16000000L</Value>
             <Value>__AVR__</Value>
             <Value>__cplusplus</Value>
-            <Value>BOARD=USER_BOARD</Value>
           </ListValues>
         </avrgcc.compiler.symbols.DefSymbols>
         <avrgcc.compiler.directories.IncludePaths>
@@ -116,7 +115,6 @@
             <Value>F_CPU=16000000L</Value>
             <Value>__AVR__</Value>
             <Value>__cplusplus</Value>
-            <Value>BOARD=USER_BOARD</Value>
           </ListValues>
         </avrgcccpp.compiler.symbols.DefSymbols>
         <avrgcccpp.compiler.directories.IncludePaths>
@@ -193,7 +191,6 @@
             <Value>F_CPU=16000000L</Value>
             <Value>__AVR__</Value>
             <Value>__cplusplus</Value>
-            <Value>BOARD=USER_BOARD</Value>
           </ListValues>
         </avrgcc.compiler.symbols.DefSymbols>
         <avrgcc.compiler.directories.IncludePaths>
@@ -230,7 +227,6 @@
             <Value>F_CPU=16000000L</Value>
             <Value>__AVR__</Value>
             <Value>__cplusplus</Value>
-            <Value>BOARD=USER_BOARD</Value>
           </ListValues>
         </avrgcccpp.compiler.symbols.DefSymbols>
         <avrgcccpp.compiler.directories.IncludePaths>
@@ -291,22 +287,28 @@
     </VisualMicroSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Direction.cpp">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Direction.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Main.ino">
+    <Compile Include="Motor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Motor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Robot.ino">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PinRegistry.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Sensors.cpp">
+    <Compile Include="DistanceSensor.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Sensors.h">
+    <Compile Include="DistanceSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Visual Micro\.Main.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
     <None Include="src\ASF\common\boards\board.h">
@@ -364,9 +366,6 @@
       <SubType>compile</SubType>
     </None>
     <Compile Include="src\main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Visual Micro\.Main.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
