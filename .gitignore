@@ -8,6 +8,7 @@ wall_avoiding_robot/Robot2.0/Main/Debug/*
 wall_avoiding_robot/Robot2.0/Main/Visual Micro/*
 wall_avoiding_robot/Robot2.0/Main/src/*
 
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
@@ -37,3 +38,6 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+*.atsuo
+*.atsln

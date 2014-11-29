@@ -18,7 +18,7 @@ Robot::Robot()
 	initialize();
 }
 
-Robot::~DistanceSensor()
+Robot::~Robot()
 {}
 	
 void Robot::initialize()
@@ -27,6 +27,7 @@ void Robot::initialize()
 	startTime = millis();
 	Serial.begin(9600);
 	i = 0;
+	max_distance = 0;
 }
 
 void Robot::run()
@@ -50,24 +51,17 @@ void Robot::run()
 		case stateRunning:
 			int distance;
 			distance = distanceSensor.getDistance();
-			//Serial.println(distance);
-			distances[i] = distance;
-			i+=1;
-			if (i>=5) 
+			if (distance>max_distance)
 			{
-				for (int j=0; j<4; j++)
-				{
-					if (distances[j]<distances[j+1])
-					{
-						max=distances[j+1];
-					}
-					else
-					{
-						max=distances[j];
-					}
-				}
+				max_distance=distance;
+			}
+			//Serial.println(distance);
+			i+=1;
+			if (i>=10) 
+			{	
 				i=0;
-				Serial.println(max);
+				Serial.println(max_distance);
+				max_distance=0;
 			}
 /*					if (max<40)
 			{

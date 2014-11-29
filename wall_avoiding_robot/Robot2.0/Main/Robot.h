@@ -5,6 +5,9 @@
  *  Author: amate_000
  */ 
 
+#include "Motor.h"
+#include "DistanceSensor.h"
+
 
 #ifndef ROBOT_H_
 #define ROBOT_H_
@@ -15,6 +18,7 @@ class Robot
 	public:
 	
 		Robot();
+		virtual ~Robot();
 		void initialize();
 
 	
@@ -31,8 +35,7 @@ class Robot
 		
 		unsigned long startTime;
 		int i;
-		int distances[5];
-		int max;
+		int max_distance;
 		
 };
 

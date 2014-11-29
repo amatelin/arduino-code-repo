@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>Main</AssemblyName>
-    <Name>Robot</Name>
+    <Name>Main</Name>
     <RootNamespace>Main</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
@@ -296,7 +296,13 @@
     <Compile Include="Motor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Robot.ino">
+    <Compile Include="Robot.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Robot.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Main.ino">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PinRegistry.h">
