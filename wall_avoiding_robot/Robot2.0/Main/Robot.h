@@ -35,7 +35,9 @@ class Robot
 		
 		unsigned long startTime;
 		int i;
-		int max_distance;
+		int distance;
+		unsigned long time_since_last_instruction;
+		unsigned long last_instruction_time;
 		
 };
 

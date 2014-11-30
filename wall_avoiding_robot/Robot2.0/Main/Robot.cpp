@@ -8,6 +8,8 @@
 #include "Robot.h"
 #include "Arduino.h"
 #include "PinRegistry.h"
+#include "Direction.h"
+#include "math.h"
 
 
 Robot::Robot()
@@ -27,7 +29,7 @@ void Robot::initialize()
 	startTime = millis();
 	Serial.begin(9600);
 	i = 0;
-	max_distance = 0;
+	distance = 100;
 }
 
 void Robot::run()
@@ -39,41 +41,48 @@ void Robot::run()
 		case stateStopped:
 			if (elapsedTime>=5000)
 			{
-				/*
+				
 				leftMotor.setDirection(Direction::FORWARD);
 				rightMotor.setDirection(Direction::FORWARD);
 				leftMotor.setSpeed(190);
-				rightMotor.setSpeed(190);*/
+				rightMotor.setSpeed(190);
+				time_since_last_instruction = 0;
+				last_instruction_time = millis();
 						
 				state = stateRunning;
 			}
 			break;
 		case stateRunning:
-			int distance;
 			distance = distanceSensor.getDistance();
-			if (distance>max_distance)
+			time_since_last_instruction =millis()-last_instruction_time;
+			Serial.println(distance);
+			Serial.println(time_since_last_instruction);
+
+			if (distance<10&time_since_last_instruction>2000)
 			{
-				max_distance=distance;
-			}
-			//Serial.println(distance);
-			i+=1;
-			if (i>=10) 
-			{	
-				i=0;
-				Serial.println(max_distance);
-				max_distance=0;
-			}
-/*					if (max<40)
-			{
-						
+				int start_time = millis();		
+				int timeVar = 0;
 				leftMotor.setDirection(Direction::BACKWARD);
 				rightMotor.setDirection(Direction::BACKWARD);
-			}
-			else
-			{
+				while (timeVar<2000)
+				{
+					timeVar = millis()-start_time;
+				}
 				leftMotor.setDirection(Direction::FORWARD);
 				rightMotor.setDirection(Direction::FORWARD);
-			}*/
+				
+				
+				time_since_last_instruction = 0;
+				last_instruction_time = millis();
+			}
+			else if(distance>10)
+			{
+				Serial.println("F");
+				leftMotor.setDirection(Direction::FORWARD);
+				rightMotor.setDirection(Direction::FORWARD);
+				time_since_last_instruction=0;
+				last_instruction_time = millis();
+			}
 	}
 }
 	
