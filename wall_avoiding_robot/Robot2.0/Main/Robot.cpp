@@ -45,7 +45,7 @@ void Robot::run()
 				leftMotor.setDirection(Direction::FORWARD);
 				rightMotor.setDirection(Direction::FORWARD);
 				leftMotor.setSpeed(190);
-				rightMotor.setSpeed(190);
+				rightMotor.setSpeed(200);
 				time_since_last_instruction = 0;
 				last_instruction_time = millis();
 						
@@ -58,13 +58,20 @@ void Robot::run()
 			Serial.println(distance);
 			Serial.println(time_since_last_instruction);
 
-			if (distance<10&time_since_last_instruction>2000)
+			if (distance<35&time_since_last_instruction>250)
 			{
 				int start_time = millis();		
 				int timeVar = 0;
 				leftMotor.setDirection(Direction::BACKWARD);
 				rightMotor.setDirection(Direction::BACKWARD);
-				while (timeVar<2000)
+				while (timeVar<750)
+				{
+					timeVar = millis()-start_time;
+				}
+				timeVar = 0;
+				leftMotor.setDirection(Direction::BACKWARD);
+				rightMotor.setDirection(Direction::FORWARD);
+				while (timeVar<1485)
 				{
 					timeVar = millis()-start_time;
 				}
@@ -75,7 +82,7 @@ void Robot::run()
 				time_since_last_instruction = 0;
 				last_instruction_time = millis();
 			}
-			else if(distance>10)
+			else if(distance>35)
 			{
 				Serial.println("F");
 				leftMotor.setDirection(Direction::FORWARD);
@@ -83,6 +90,6 @@ void Robot::run()
 				time_since_last_instruction=0;
 				last_instruction_time = millis();
 			}
-	}
+		}
 }
 	
