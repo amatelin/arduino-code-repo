@@ -5,8 +5,10 @@
  * Author: amate_000
  */ 
 #include "Timer.h"
+#include "Lock.h"
 
 Timer timer;
+Lock lock;
 int hours;
 int minutes;
 
