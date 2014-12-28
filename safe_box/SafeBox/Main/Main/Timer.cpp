@@ -15,11 +15,6 @@ Timer::Timer()
 	int minutes = 0;
 }
 
-Timer::~Timer()
-{
-	
-}
-
 void Timer::start()
 {
 	if (hours>0 | minutes>0)

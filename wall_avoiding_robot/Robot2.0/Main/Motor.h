@@ -13,8 +13,7 @@
 class Motor {
 	public:
 		Motor(int, int, int);
-		virtual ~Motor();
-		
+
 		void initialize();
 		void setSpeed(int speed);
 		void setDirection(int DIRECTION);

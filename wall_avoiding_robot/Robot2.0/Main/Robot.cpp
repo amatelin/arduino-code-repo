@@ -30,12 +30,15 @@ void Robot::initialize()
 	Serial.begin(9600);
 	i = 0;
 	distance = 100;
+	expectSpeed = false;
 }
 
 void Robot::run()
 {
 	unsigned long currentTime = millis();
 	unsigned long elapsedTime = currentTime - startTime;
+	communicate();
+	/*
 	switch (state)
 	{
 		case stateStopped:
@@ -54,7 +57,7 @@ void Robot::run()
 			break;
 		case stateRunning:
 			distance = distanceSensor.getDistance();
-			time_since_last_instruction =millis()-last_instruction_time;
+			5time_since_last_instruction =millis()-last_instruction_time;
 			Serial.println(distance);
 			Serial.println(time_since_last_instruction);
 
@@ -90,6 +93,95 @@ void Robot::run()
 				time_since_last_instruction=0;
 				last_instruction_time = millis();
 			}
-		}
+		}*/
 }
+
+void Robot::communicate()
+{
+	int code;
+	if (Serial.available()>0)
+	{
+		if (expectSpeed==true)
+		{
+			code = Serial.parseInt();
+			expectSpeed=false;
+			setSpeed(code);
+		}
+		else
+		{
+			code = Serial.read();
+		}
+	}
+	if (code=='S')
+	{
+		expectSpeed=true;
+	}
+	switch(code)
+	{
+		case '1':
+			start();
+			break;
+		case '0':
+			stop();
+			break;
+		case 'F':
+			forward();
+			break;
+		case 'B':
+			backward();
+			break;
+		case 'R':
+			turnRight();
+			break;
+		case 'l':
+			turnLeft();
+			break;
+	}
+}
+
+void Robot::forward()
+{
+	leftMotor.setDirection(Direction::FORWARD);
+	rightMotor.setDirection(Direction::FORWARD);
+}
+
+void Robot::backward()
+{
+	leftMotor.setDirection(Direction::BACKWARD);
+	rightMotor.setDirection(Direction::BACKWARD);
+}
+
+void Robot::start()
+{
+	leftMotor.setSpeed(defaultSpeed);
+	rightMotor.setSpeed(defaultSpeed);	
+}
+
+void Robot::stop()
+{
+	leftMotor.setSpeed(0);
+	rightMotor.setSpeed(0);
+}
+
+void Robot::setSpeed(int speed)
+{
+	leftMotor.setSpeed(speed);
+	rightMotor.setSpeed(speed);
+}
+
+void Robot::turnLeft()
+{
+	leftMotor.setDirection(Direction::BACKWARD);
+	rightMotor.setDirection(Direction::FORWARD);
+}
+
+void Robot::turnRight()
+{
+	leftMotor.setDirection(Direction::FORWARD);
+	rightMotor.setDirection(Direction::BACKWARD);
+}
+
+void Robot::turnAround()
+{
 	
+}

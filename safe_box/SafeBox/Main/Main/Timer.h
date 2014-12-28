@@ -12,7 +12,6 @@
 class Timer {
 	public:
 		Timer();
-		virtual ~Timer();
 		
 		void setTimer(int in_h, int in_mn);
 		void start();

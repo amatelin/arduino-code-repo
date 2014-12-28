@@ -10,9 +10,8 @@
 #define LOCK_H_
 
 class Lock {
-		public:
-		Lock();
-		virtual ~Lock();
+	public:
+		void Lock(int);
 	
 		void open();
 		void close();

@@ -19,10 +19,6 @@ void Motor::initialize()
 }
 
 
-Motor::~Motor()
-{
-}
-
 void Motor::setSpeed(int speed)
 {
 	analogWrite(PWM_PIN, speed);
@@ -33,10 +29,6 @@ void Motor::setDirection(int DIRECTION)
 	switch(DIRECTION)
 	{
 		case 1:
-			digitalWrite(IN1_PIN, LOW);
-			digitalWrite(IN2_PIN, HIGH);
-			break;
-		case 0:
 			digitalWrite(IN1_PIN, LOW);
 			digitalWrite(IN2_PIN, HIGH);
 			break;

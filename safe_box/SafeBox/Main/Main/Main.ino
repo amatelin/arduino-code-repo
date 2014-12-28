@@ -6,9 +6,15 @@
  */ 
 #include "Timer.h"
 #include "Lock.h"
+#include "Button.h"
+#include "PinRegistry.h"
 
 Timer timer;
-Lock lock;
+Lock lock(PinRegistry::LOCK);
+Button button1(PinRegistry::BUTTON1);
+Button button2(PinRegistry::BUTTON2);
+Display display(PinRegistry::ANODES, PinRegistry::CATHODES);
+
 int hours;
 int minutes;
 

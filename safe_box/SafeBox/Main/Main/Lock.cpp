@@ -7,14 +7,10 @@
 #include "Arduino.h"
 #include "Lock.h"
 
-void Lock::Lock()
+void Lock::Lock(int pin)
+	: controlPin(pin)
 {
 	close();
-}
-
-void Lock::~Lock()
-{
-	
 }
 
 void Lock::open()
@@ -30,12 +26,5 @@ void Lock::close()
 
 bool Lock::isClosed()
 {
-	if (state==closed)
-	{
-		return true;
-	} 
-	else
-	{
-		return false;
-	}
+	return (state==closed)?true:false;
 }

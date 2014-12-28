@@ -23,6 +23,16 @@ class Robot
 
 	
 		void run();
+		void communicate();
+		
+		void forward();
+		void backward();
+		void start();
+		void stop();
+		void setSpeed(int);
+		void turnLeft();
+		void turnRight();
+		void turnAround();
 		
 	private:
 		Motor leftMotor;
@@ -32,12 +42,17 @@ class Robot
 		
 		enum state_t {stateStopped, stateRunning};
 		state_t state;
+		int currentDirection;
+		
+		static const int defaultSpeed = 200;
 		
 		unsigned long startTime;
 		int i;
 		int distance;
 		unsigned long time_since_last_instruction;
 		unsigned long last_instruction_time;
+		
+		bool expectSpeed;
 		
 };
 
