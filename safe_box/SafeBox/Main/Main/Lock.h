@@ -11,7 +11,7 @@
 
 class Lock {
 	public:
-		void Lock(int);
+		Lock(int);
 	
 		void open();
 		void close();
@@ -20,7 +20,7 @@ class Lock {
 	private:
 		unsigned int controlPin;
 		
-		enum state_t {open, closed};
+		enum state_t {state_open, state_closed};
 		state_t state;
 	};
 

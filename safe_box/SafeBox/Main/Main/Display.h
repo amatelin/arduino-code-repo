@@ -11,7 +11,7 @@
 
 class Display {
 	public:
-		void Display(int * array, int * array);
+		Display(const unsigned int *,const unsigned int *);
 		
 		void show(int);
 		void clearDigits();
@@ -20,8 +20,8 @@ class Display {
 		unsigned int anodePinRegistry[8];
 		unsigned int cathodePinRegistry[4];
 		
-		unsigned int anodePinsPatterns[10] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123};
-		unsigned int masks[7] = {1, 2, 4, 8, 16, 32, 64};
+		static const unsigned int anodePinsPatterns[10];
+		static const unsigned int masks[7];
 		
 		void activateDigit(int);
 		void showNumber(int);

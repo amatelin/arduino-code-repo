@@ -7,7 +7,7 @@
 #include "Arduino.h"
 #include "Lock.h"
 
-void Lock::Lock(int pin)
+Lock::Lock(int pin)
 	: controlPin(pin)
 {
 	close();
@@ -16,7 +16,7 @@ void Lock::Lock(int pin)
 void Lock::open()
 {
 	digitalWrite(controlPin, HIGH);
-	state = closed;
+	state = state_closed;
 }
 
 void Lock::close()
@@ -26,5 +26,5 @@ void Lock::close()
 
 bool Lock::isClosed()
 {
-	return (state==closed)?true:false;
+	return (state==state_closed)?true:false;
 }

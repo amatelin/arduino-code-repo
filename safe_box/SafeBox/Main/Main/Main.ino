@@ -8,6 +8,7 @@
 #include "Lock.h"
 #include "Button.h"
 #include "PinRegistry.h"
+#include "Display.h"
 
 Timer timer;
 Lock lock(PinRegistry::LOCK);

@@ -8,12 +8,12 @@
 #include "Button.h"
 #include "Arduino.h"
 
-void Button::Button(int pin)
-	: referencePin(pin);
+Button::Button(int pin)
+	: referencePin(pin)
 {
 }
 
 bool Button::isPressed()
 {
-	return ? (digitalRead(referencePin)==HIGH) false:true;
+	return (digitalRead(referencePin)==HIGH) ? false:true;
 }

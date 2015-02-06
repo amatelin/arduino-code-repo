@@ -12,8 +12,7 @@
 class Button {
 	public:
 		Button(int);
-		virtual ~Button();
-		
+
 		bool isPressed();
 		
 	private:
