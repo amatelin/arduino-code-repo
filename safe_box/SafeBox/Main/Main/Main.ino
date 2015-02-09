@@ -34,9 +34,11 @@ void loop()
 		hours = timer.getHours();
 		if (timer.getMinutes()!=minutes)
 		{
-			Serial.println(timer.getMinutes());
+			minutes = timer.getMinutes();
+			Serial.println(minutes);
+			display.show(1);
+			
 		}
-		minutes = timer.getMinutes();
 		
 		if (timer.ringRing()==true)
 		{
@@ -49,8 +51,11 @@ void loop()
 	}
 	else
 	{
+		display.show(1);
 		timer.setTimer(0, 3);
+		
 		timer.start();
+		Serial.println("Started timer");
 	}
 	
 

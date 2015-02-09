@@ -20,8 +20,8 @@ class Display {
 		unsigned int anodePinRegistry[8];
 		unsigned int cathodePinRegistry[4];
 		
-		static const unsigned int anodePinsPatterns[10];
-		static const unsigned int masks[7];
+		unsigned int anodePinsPatterns[10];
+		unsigned int masks[7];
 		
 		void activateDigit(int);
 		void showNumber(int);

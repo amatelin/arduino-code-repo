@@ -10,11 +10,10 @@
 
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
-#define ARDUINO 101
+#define ARDUINO 106
 #define ARDUINO_MAIN
 #define F_CPU 16000000L
 #define __AVR__
-#define __cplusplus
 extern "C" void __cxa_pure_virtual() {;}
 
 //
