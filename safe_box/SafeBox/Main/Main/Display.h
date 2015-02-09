@@ -13,6 +13,7 @@ class Display {
 	public:
 		Display(const unsigned int *,const unsigned int *);
 		
+		void enablePins();
 		void show(int);
 		void clearDigits();
 
@@ -20,8 +21,8 @@ class Display {
 		unsigned int anodePinRegistry[8];
 		unsigned int cathodePinRegistry[4];
 		
-		unsigned int anodePinsPatterns[10];
-		unsigned int masks[7];
+		static const unsigned int* ANODE_PIN_PATTERNS;
+		static const unsigned int* MASKS;
 		
 		void activateDigit(int);
 		void showNumber(int);

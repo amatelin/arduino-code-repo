@@ -22,21 +22,22 @@ int minutes;
 void setup()
 {
 
-	  Serial.begin(9600);
+	  //Serial.begin(9600);
+	  display.enablePins();
 }
 
 void loop()
 {
-	
 	if (timer.isRunning()==1)
 	{
+		
 		timer.tic();
 		hours = timer.getHours();
+		display.show(timer.getMinutes());
 		if (timer.getMinutes()!=minutes)
 		{
 			minutes = timer.getMinutes();
-			Serial.println(minutes);
-			display.show(1);
+			// Serial.println(minutes);
 			
 		}
 		
@@ -51,8 +52,7 @@ void loop()
 	}
 	else
 	{
-		display.show(1);
-		timer.setTimer(0, 3);
+		timer.setTimer(0, 5);
 		
 		timer.start();
 		Serial.println("Started timer");

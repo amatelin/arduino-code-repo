@@ -7,36 +7,42 @@
 #include "Arduino.h"
 #include "Display.h"
 
+static const unsigned int patterns[] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123};
+static const unsigned int masks[] =  {64, 32, 16, 8, 4, 2, 1};
+const unsigned int* Display::ANODE_PIN_PATTERNS = patterns;
+const unsigned int* Display::MASKS = masks;
+
 Display::Display(const unsigned int * anodesPinArray,const unsigned int * cathodesPinArray)
 {
 	memcpy(anodePinRegistry, anodesPinArray, 8*sizeof(int));
 	memcpy(cathodePinRegistry,  cathodesPinArray, 4*sizeof(int));	
+}
 
-	unsigned int anodePinsPatterns[10] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123};  // left padded with one 0
-	unsigned int masks[7] = {2, 4, 8, 16, 32, 64, 128};
+void Display::enablePins()
+{
+	for (int i; i<4; i++)
+	{
+		pinMode(cathodePinRegistry[i], OUTPUT);
+	}
+	for (int i; i<8; i++){
+		pinMode(anodePinRegistry[i], OUTPUT);
+	}
 }
 
 void Display::show(int number)
 {
-	Serial.println("Original number :");
-	Serial.println(number);
+	clearDigits();
+	activateDigit(0);
+	int startDigit = 3;
 	for (int i=0; i<4; i++)
 	{
 		int currentNumber = number%10;
-		Serial.println("Current number :");
-		Serial.println(number);
 		clearDigits();
-		activateDigit(i);
-		for (int j=0; j<10; j++)
-		{
-			Serial.println(anodePinsPatterns[j]); // la il devrait printer 126 48 109 etc. non ?
-		}
-		// showNumber(currentNumber);
+		activateDigit(startDigit);
+		showNumber(currentNumber);
 		number = (number-currentNumber)/10;
-
+		startDigit -= 1;
 	}
-
-	
 }
 
 void Display::clearDigits()
@@ -56,16 +62,12 @@ void Display::activateDigit(int digit)
 
 void Display::showNumber(int number)
 {
-	for (int i=0; i<8; i++)
+	for (int i=0; i<7; i++)
 	{
-		unsigned int turn_on = anodePinsPatterns[number]&masks[i];
-		Serial.println(anodePinsPatterns[number]);
-		Serial.println(masks[i]);
-		Serial.println(turn_on);
-		/*if (turn_on>0){
+		unsigned int turn_on = Display::ANODE_PIN_PATTERNS[number]&Display::MASKS[i];
+		if (turn_on>0){
 			digitalWrite(anodePinRegistry[i], HIGH);
-			Serial.println("ANODE HIGH :"+i);
-			}*/
+		}
 	}
 }
 

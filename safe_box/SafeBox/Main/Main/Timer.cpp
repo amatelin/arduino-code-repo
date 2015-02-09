@@ -46,8 +46,6 @@ void Timer::convertTimeToMillis()
 	unsigned long total_mn = (hours*60) + minutes;
 	unsigned long seconds = total_mn*60;
 	remainingTime = seconds*1000;
-	Serial.println(remainingTime);
-
 }
 
 void Timer::convertMillisToTime()
