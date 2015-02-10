@@ -58,18 +58,21 @@ void loop()
 	else
 	{
 		display.show(start_hr*100+start_mn);
-		bool button1State = button1.isPressed();
-		bool button2State = button2.isPressed();
-		if (button1State&button2State)
+		bool button1Pressed = button1.isPressed();
+		bool button2Pressed = button2.isPressed();
+		bool button1Held = button1.isHeld();
+		bool button2Held = button2.isHeld();
+		
+		if (button1Held&button2Held)
 		{
 			timer.setTimer(start_hr, start_mn);
-				timer.start();
+			timer.start();
 		}
-		else if (button1State)
+		else if (button1Pressed)
 		{
-			start_mn+=1;
+			start_mn+=1;				
 		}
-		else if (button2State)
+		else if (button2Pressed)
 		{
 			start_hr+=1;
 		}

@@ -11,9 +11,25 @@
 Button::Button(int pin)
 	: referencePin(pin)
 {
+	triggered = false;
 }
 
 bool Button::isPressed()
+{
+	if (!triggered&digitalRead(referencePin)==HIGH)
+	{
+		triggered=true;
+		return true;
+	}
+	else if (triggered&digitalRead(referencePin)==LOW)
+	{
+		triggered=false;
+		return false;
+	}
+	return false;
+}
+
+bool Button::isHeld()
 {
 	return (digitalRead(referencePin)==HIGH) ? false:true;
 }

@@ -14,9 +14,12 @@ class Button {
 		Button(int);
 
 		bool isPressed();
+		bool isHeld();
 		
 	private:
 		unsigned int referencePin;
+		bool triggered;
+
 	
 	};
 
