@@ -11,8 +11,8 @@
 
 class PinRegistry {
 	public:
-		static const unsigned int BUTTON1 = 1;
-		static const unsigned int BUTTON2 = 1;
+		static const unsigned int BUTTON1 = 14;
+		static const unsigned int BUTTON2 = 15;
 		
 		static const unsigned int LOCK = 1;
 		

@@ -18,44 +18,62 @@ Display display(PinRegistry::ANODES, PinRegistry::CATHODES);
 
 int hours;
 int minutes;
+int start_mn = 0;
+int start_hr = 0;
 
 void setup()
 {
 
 	  //Serial.begin(9600);
 	  display.enablePins();
+	  pinMode(PinRegistry::BUTTON1, INPUT);
+	  pinMode(PinRegistry::BUTTON2, INPUT);
+		
 }
 
 void loop()
 {
+
 	if (timer.isRunning()==1)
 	{
 		
 		timer.tic();
 		hours = timer.getHours();
-		display.show(timer.getMinutes());
+		int time = hours*100+timer.getMinutes();
+		display.show(time);
+		//display.showDot(1);
 		if (timer.getMinutes()!=minutes)
 		{
 			minutes = timer.getMinutes();
-			// Serial.println(minutes);
 			
 		}
 		
+	
+		
 		if (timer.ringRing()==true)
 		{
-			while (true)
-			{
-				Serial.println("Rrrrrrrring");
-			}
 
 		}
 	}
 	else
 	{
-		timer.setTimer(0, 5);
-		
-		timer.start();
-		Serial.println("Started timer");
+		display.show(start_hr*100+start_mn);
+		bool button1State = button1.isPressed();
+		bool button2State = button2.isPressed();
+		if (button1State&button2State)
+		{
+			timer.setTimer(start_hr, start_mn);
+				timer.start();
+		}
+		else if (button1State)
+		{
+			start_mn+=1;
+		}
+		else if (button2State)
+		{
+			start_hr+=1;
+		}
+
 	}
 	
 

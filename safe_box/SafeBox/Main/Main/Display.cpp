@@ -60,6 +60,12 @@ void Display::activateDigit(int digit)
 	digitalWrite(cathodePinRegistry[digit], LOW);
 }
 
+void Display::showDot(int digit){
+	clearDigits();
+	activateDigit(digit);
+	digitalWrite(anodePinRegistry[7], HIGH);
+}
+
 void Display::showNumber(int number)
 {
 	for (int i=0; i<7; i++)

@@ -16,6 +16,7 @@ class Display {
 		void enablePins();
 		void show(int);
 		void clearDigits();
+		void showDot(int);
 
 	private:
 		unsigned int anodePinRegistry[8];

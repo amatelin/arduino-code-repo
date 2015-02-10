@@ -5,7 +5,7 @@
 	        all non-arduino files created by visual micro and all visual studio project or solution files can be freely deleted and are not required to compile a sketch (do not delete your own code!).
 	        note: debugger breakpoints are stored in '.sln' or '.asln' files, knowledge of last uploaded breakpoints is stored in the upload.vmps.xml file. Both files are required to continue a previous debug session without needing to compile and upload again
 	
-	Hardware: Arduino Uno, Platform=avr, Package=arduino
+	Hardware: Arduino Nano w/ ATmega328, Platform=avr, Package=arduino
 */
 
 #define __AVR_ATmega328p__
@@ -19,7 +19,7 @@ extern "C" void __cxa_pure_virtual() {;}
 //
 //
 
-#include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" 
+#include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\eightanaloginputs\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\safe_box\SafeBox\Main\Main\Main.ino"
 #include "C:\Users\amate_000\Dropbox\Blog\arduino-code-repo\safe_box\SafeBox\Main\Main\Button.cpp"
