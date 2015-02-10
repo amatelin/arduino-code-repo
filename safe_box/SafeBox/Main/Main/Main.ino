@@ -28,11 +28,16 @@ void setup()
 	  display.enablePins();
 	  pinMode(PinRegistry::BUTTON1, INPUT);
 	  pinMode(PinRegistry::BUTTON2, INPUT);
+	  pinMode(PinRegistry::LOCK, OUTPUT);
 		
 }
 
 void loop()
 {
+	bool button1Pressed = button1.isPressed();
+	bool button2Pressed = button2.isPressed();
+	bool button1Held = button1.isHeld();
+	bool button2Held = button2.isHeld();
 
 	if (timer.isRunning()==1)
 	{
@@ -41,40 +46,45 @@ void loop()
 		hours = timer.getHours();
 		int time = hours*100+timer.getMinutes();
 		display.show(time);
-		//display.showDot(1);
+		//display.showDot(1); // takes some juice away from the other segments
 		if (timer.getMinutes()!=minutes)
 		{
 			minutes = timer.getMinutes();
 			
 		}
 		
-	
-		
+
 		if (timer.ringRing()==true)
 		{
-
+			display.show(888);
+			lock.open();
 		}
 	}
 	else
 	{
 		display.show(start_hr*100+start_mn);
-		bool button1Pressed = button1.isPressed();
-		bool button2Pressed = button2.isPressed();
-		bool button1Held = button1.isHeld();
-		bool button2Held = button2.isHeld();
 		
 		if (button1Held&button2Held)
 		{
 			timer.setTimer(start_hr, start_mn);
 			timer.start();
+			lock.close();
 		}
 		else if (button1Pressed)
 		{
-			start_mn+=1;				
+			start_mn+=1;
 		}
 		else if (button2Pressed)
 		{
 			start_hr+=1;
+		}
+		else if (button1Held)
+		{
+			lock.open();
+		}
+		else
+		{
+			lock.close();
 		}
 
 	}

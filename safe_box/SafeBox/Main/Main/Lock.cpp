@@ -15,13 +15,20 @@ Lock::Lock(int pin)
 
 void Lock::open()
 {
-	digitalWrite(controlPin, HIGH);
-	state = state_closed;
+	if (state==state_closed)
+	{
+		digitalWrite(controlPin, HIGH);
+		state = state_open;
+	}
 }
 
 void Lock::close()
 {
-	digitalWrite(controlPin, LOW);
+	if (state==state_open)
+	{
+		digitalWrite(controlPin, LOW);
+		state = state_closed;
+	}
 }
 
 bool Lock::isClosed()

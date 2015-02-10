@@ -1,12 +1,13 @@
 char incomingByte = 0;   // for incoming serial data
 char one = 1;
 char zero = 0;
-int controlPin = 7;
-int switchPin = 13;
+int controlPin = 16;
+int switchPin = 14;
 
 void setup() {
   Serial.begin(9600);     // opens serial port, sets data rate to 9600 bps
   pinMode(controlPin, OUTPUT);
+  pinMode(switchPin, INPUT);
 }
 
 void loop() {

@@ -14,7 +14,7 @@ class PinRegistry {
 		static const unsigned int BUTTON1 = 14;
 		static const unsigned int BUTTON2 = 15;
 		
-		static const unsigned int LOCK = 1;
+		static const unsigned int LOCK = 16;
 		
 		static const unsigned int ANODES[8];
 		static const unsigned int CATHODES[4];

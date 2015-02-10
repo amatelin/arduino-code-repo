@@ -16,12 +16,12 @@ Button::Button(int pin)
 
 bool Button::isPressed()
 {
-	if (!triggered&digitalRead(referencePin)==HIGH)
+	if (!triggered&digitalRead(referencePin)==LOW)
 	{
 		triggered=true;
 		return true;
 	}
-	else if (triggered&digitalRead(referencePin)==LOW)
+	else if (triggered&digitalRead(referencePin)==HIGH)
 	{
 		triggered=false;
 		return false;
