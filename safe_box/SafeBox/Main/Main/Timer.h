@@ -15,6 +15,7 @@ class Timer {
 		
 		void setTimer(int in_h, int in_mn);
 		void start();
+		void stop();
 		void tic();
 		int isRunning();
 		int getHours();

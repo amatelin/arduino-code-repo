@@ -25,6 +25,13 @@ void Timer::start()
 
 }
 
+void Timer::stop()
+{
+	state = stopped;
+	int hours = 0;
+	int minutes = 0;
+}
+
 void Timer::setTimer(int in_h, int in_mn)
 {
 	hours = in_h;
@@ -89,10 +96,10 @@ bool Timer::ringRing()
 	if (remainingTime==0)
 	{
 		return true;
-		state = stopped;
 	}
 	else
 	{
 		return false;
 	}
 }
+

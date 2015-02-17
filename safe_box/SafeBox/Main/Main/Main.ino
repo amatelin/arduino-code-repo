@@ -20,6 +20,7 @@ int hours;
 int minutes;
 int start_mn = 0;
 int start_hr = 0;
+int i = 0;
 
 void setup()
 {
@@ -41,24 +42,40 @@ void loop()
 
 	if (timer.isRunning()==1)
 	{
-		
-		timer.tic();
-		hours = timer.getHours();
-		int time = hours*100+timer.getMinutes();
-		display.show(time);
-		//display.showDot(1); // takes some juice away from the other segments
-		if (timer.getMinutes()!=minutes)
-		{
-			minutes = timer.getMinutes();
-			
-		}
-		
-
 		if (timer.ringRing()==true)
 		{
-			display.show(888);
+			start_hr = 0;
+			start_mn = 0;
+			display.clearDigits();
+			display.showDot(i);
+			if (i<4){
+				i+=1;
+			} else {
+				i=0;
+			}
+
+			
 			lock.open();
+			if (button1Held&button2Held)
+			{
+				timer.stop();
+			}
 		}
+		else
+		{
+			timer.tic();
+			hours = timer.getHours();
+			int time = hours*100+timer.getMinutes();
+			display.show(time);
+			//display.showDot(1); // takes some juice away from the other segments
+			if (timer.getMinutes()!=minutes)
+			{
+				minutes = timer.getMinutes();
+						
+			}
+		}
+		
+		
 	}
 	else
 	{
@@ -72,7 +89,16 @@ void loop()
 		}
 		else if (button1Pressed)
 		{
-			start_mn+=1;
+			if (start_mn==59)
+			{
+				start_hr += 1;
+				start_mn = 0; 
+			}
+			else
+			{
+				start_mn+=1;				
+			}
+
 		}
 		else if (button2Pressed)
 		{
