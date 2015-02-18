@@ -104,13 +104,9 @@ void loop()
 		{
 			start_hr+=1;
 		}
-		else if (button1Held)
-		{
-			lock.open();
-		}
 		else
 		{
-			lock.close();
+			lock.open();
 		}
 
 	}
