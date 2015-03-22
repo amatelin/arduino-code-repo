@@ -12,7 +12,7 @@
 #include "Display.h"
 
 Timer timer;
-Lock lock(PinRegistry::LOCK);
+Lock lock;
 Button button2;
 Button button1;
 
@@ -27,14 +27,15 @@ int i = 0;
 void setup()
 {
 
-	  //Serial.begin(9600);
-	  button1.attach(PinRegistry::BUTTON1);
-	  button2.attach(PinRegistry::BUTTON2);
-	  display.enablePins();
-	  pinMode(PinRegistry::BUTTON1, INPUT);
-	  pinMode(PinRegistry::BUTTON2, INPUT);
-	  pinMode(PinRegistry::LOCK, OUTPUT);
-		
+	//Serial.begin(9600);
+	button1.attach(PinRegistry::BUTTON1);
+	button2.attach(PinRegistry::BUTTON2);
+	display.enablePins();
+	  
+	pinMode(PinRegistry::BUTTON1, INPUT);
+	pinMode(PinRegistry::BUTTON2, INPUT);
+	lock.attach(PinRegistry::LOCK);
+
 }
 
 void loop()
@@ -66,8 +67,7 @@ void loop()
 		{
 			timer.tic();
 			hours = timer.getHours();
-			minutes = timer.getMinutes()+1;
-			int time = hours*100+minutes;
+			int time = hours*100+timer.getMinutes()+1;
 			display.show(time);
 			if (timer.getMinutes()!=minutes)
 			{
@@ -87,7 +87,7 @@ void loop()
 		{
 			if (button1Pressed)
 			{
-				//lock.toggle();
+				lock.toggle();
 			}
 			else if (button2Pressed)
 			{

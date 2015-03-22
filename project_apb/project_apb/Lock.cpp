@@ -8,10 +8,14 @@
 #include "Lock.h"
 #include <Servo.h>
 
-Lock::Lock(int pin)
-	: controlPin(pin)
+Lock::Lock()
+{
+}
+
+void Lock::attach(int pin)
 {
 	servo.attach(pin);
+	state = state_closed;
 	open();
 }
 
@@ -19,16 +23,21 @@ void Lock::open()
 {
 	if (state==state_closed)
 	{
-		servo.write(180);
+		servo.write(70);
 		state = state_open;
 	}
+}
+
+void Lock::toggle()
+{
+	(state==state_closed) ? open():close();
 }
 
 void Lock::close()
 {
 	if (state==state_open)
 	{
-		servo.write(90);
+		servo.write(170);
 		state = state_closed;
 	}
 }

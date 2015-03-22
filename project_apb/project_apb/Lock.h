@@ -11,14 +11,15 @@
 
 class Lock {
 	public:
-		Lock(int);
-	
+		Lock();
+		
+		void attach(int);
 		void open();
 		void close();
+		void toggle();
 		bool isClosed();
 	
 	private:
-		unsigned int controlPin;
 		Servo servo;
 		
 		enum state_t {state_open, state_closed};
