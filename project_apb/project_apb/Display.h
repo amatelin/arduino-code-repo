@@ -17,6 +17,7 @@ class Display {
 		void show(int);
 		void clearDigits();
 		void showColon();
+		void printOpen();
 		
 		void activateDigit(int);
 		void showNumber(int);

@@ -40,6 +40,7 @@ void setup()
 
 void loop()
 {
+	
 	bool button1Pressed = button1.isPressed();
 	bool button2Pressed = button2.isPressed();
 	int button1Held = button1.isHeld();
@@ -54,10 +55,8 @@ void loop()
 			start_mn = 0;
 			display.clearDigits();
 			display.showColon();
-
-
-			
 			lock.open();
+			display.printOpen();
 			if (button1Held&button2Held)
 			{
 				timer.stop();

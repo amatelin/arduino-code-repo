@@ -7,7 +7,8 @@
 #include "Arduino.h"
 #include "Display.h"
 
-static const unsigned int patterns[] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123};
+static const unsigned int patterns[] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123, 103, 79, 118};
+static const unsigned int openChar[] = {0, 10, 11, 12};
 static const unsigned int masks[] =  {64, 32, 16, 8, 4, 2, 1};
 const unsigned int* Display::CATHODE_PIN_PATTERNS = patterns;
 const unsigned int* Display::MASKS = masks;
@@ -74,6 +75,16 @@ void Display::showNumber(int number)
 		{
 			digitalWrite(cathodePinRegistry[i], HIGH);
 		}
+	}
+}
+
+void Display::printOpen()
+{
+	for (int i=0; i<4; i++)
+	{
+		clearDigits();
+		activateDigit(i);
+		showNumber(openChar[i]);
 	}
 }
 

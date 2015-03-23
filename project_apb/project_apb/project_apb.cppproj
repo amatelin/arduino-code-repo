@@ -63,6 +63,7 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
+      <Value></Value>
       <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include/</Value>
       <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
       <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
@@ -97,6 +98,7 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
+      <Value></Value>
       <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include/</Value>
       <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
       <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
@@ -275,6 +277,11 @@ build.arch=AVR
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
         <arduino.upload.port>COM7</arduino.upload.port>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>0</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>0</VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>
+        <VM.DebugVariablesWindow.ColumnVisibleFunctionName>0</VM.DebugVariablesWindow.ColumnVisibleFunctionName>
+        <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>0</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>0</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
       </VisualMicroSettings>
     </VisualMicroSettings>
     <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/yun;../../project_apb;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;C:/Users/amate_000/Documents/Arduino/libraries;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include/;;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;C:/Program Files (x86)/Arduino/libraries/Servo/src;C:/Program Files (x86)/Arduino/libraries/Servo/src/utility;C:/Program Files (x86)/Arduino/libraries/libraries;</VMSETTING_IncludePaths>
@@ -516,6 +523,11 @@ build.arch=AVR
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
         <arduino.upload.port>COM7</arduino.upload.port>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>0</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>0</VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>
+        <VM.DebugVariablesWindow.ColumnVisibleFunctionName>0</VM.DebugVariablesWindow.ColumnVisibleFunctionName>
+        <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>0</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>0</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
       </VisualMicroSettings>
     </VisualMicroSettings>
     <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/yun;../../project_apb;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;C:/Users/amate_000/Documents/Arduino/libraries;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include/;;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;C:/Program Files (x86)/Arduino/libraries/Servo/src;C:/Program Files (x86)/Arduino/libraries/Servo/src/utility;C:/Program Files (x86)/Arduino/libraries/libraries;</VMSETTING_IncludePaths>
