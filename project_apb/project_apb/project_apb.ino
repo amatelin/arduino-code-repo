@@ -53,7 +53,6 @@ void loop()
 		{
 			start_hr = 0;
 			start_mn = 0;
-			display.clearDigits();
 			display.showColon();
 			lock.open();
 			display.printOpen();
@@ -68,6 +67,7 @@ void loop()
 			hours = timer.getHours();
 			int time = hours*100+timer.getMinutes()+1;
 			display.show(time);
+			display.showColon();
 			if (timer.getMinutes()!=minutes)
 			{
 				minutes = timer.getMinutes();

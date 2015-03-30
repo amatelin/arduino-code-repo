@@ -24,7 +24,7 @@ class Display {
 
 	private:
 		unsigned int cathodePinRegistry[8];
-		unsigned int anodePinRegistry[4];
+		unsigned int anodePinRegistry[5];
 		
 		static const unsigned int* CATHODE_PIN_PATTERNS;
 		static const unsigned int* MASKS;

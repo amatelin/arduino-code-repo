@@ -45,22 +45,22 @@ void Display::show(int number)
 void Display::clearDigits()
 {
 	for (int i=0; i<8; i++){
-		digitalWrite(cathodePinRegistry[i], HIGH);
+		digitalWrite(cathodePinRegistry[i], LOW);
 	}
 }
 
 void Display::activateDigit(int digit)
 {
 	for (int i=0; i<5; i++){
-		digitalWrite(anodePinRegistry[i], LOW);
+		digitalWrite(anodePinRegistry[i], HIGH);
 	}
-	digitalWrite(anodePinRegistry[digit], HIGH);
+	digitalWrite(anodePinRegistry[digit], LOW);
 }
 
 void Display::showColon(){
 	clearDigits();
-	digitalWrite(anodePinRegistry[4], HIGH);
-	digitalWrite(cathodePinRegistry[7], LOW);
+	digitalWrite(anodePinRegistry[4], LOW);
+	digitalWrite(cathodePinRegistry[7], HIGH);
 }
 
 void Display::showNumber(int number)
@@ -69,11 +69,11 @@ void Display::showNumber(int number)
 	{
 		unsigned int turn_on = Display::CATHODE_PIN_PATTERNS[number]&Display::MASKS[i];
 		if (turn_on>0){
-			digitalWrite(cathodePinRegistry[i], LOW);
+			digitalWrite(cathodePinRegistry[i], HIGH);
 		}
 		else
 		{
-			digitalWrite(cathodePinRegistry[i], HIGH);
+			digitalWrite(cathodePinRegistry[i], LOW);
 		}
 	}
 }
