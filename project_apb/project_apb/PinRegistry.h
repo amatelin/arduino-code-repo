@@ -11,18 +11,19 @@
 
 class PinRegistry {
 	public:
-		static const unsigned int BUTTON1 = 2;
-		static const unsigned int BUTTON2 = 4;
+		static const unsigned int BUTTON1 = 19;
+		static const unsigned int BUTTON2 = 16;
 		
-		static const unsigned int LOCK = 5;
+		static const unsigned int LOCK = 3;
+		static const unsigned int LED = 4;
 		
 		static const unsigned int CATHODES[8];
 		static const unsigned int ANODES[5];
 		
 	};
 
-const unsigned int PinRegistry::CATHODES[8] = {6, 7, 8, 9, 10, 11, 12, 13};
-const unsigned int PinRegistry::ANODES[5] = {14, 15, 16, 17, 18};
+const unsigned int PinRegistry::CATHODES[8] = {12, 10, 5, 1, 0, 11, 6, 9};
+const unsigned int PinRegistry::ANODES[5] = {15, 14, 13, 7, 8};
 
 
 
