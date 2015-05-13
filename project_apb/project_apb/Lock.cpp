@@ -37,7 +37,7 @@ void Lock::close()
 {
 	if (state==state_open)
 	{
-		servo.write(170);
+		servo.write(145);
 		state = state_closed;
 	}
 }

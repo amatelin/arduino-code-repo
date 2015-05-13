@@ -17,6 +17,9 @@ class PinRegistry {
 		static const unsigned int LOCK = 3;
 		static const unsigned int LED = 4;
 		
+		static const unsigned int BATTERY = 17;
+		static const unsigned int CHARGER = 18;
+		
 		static const unsigned int CATHODES[8];
 		static const unsigned int ANODES[5];
 		

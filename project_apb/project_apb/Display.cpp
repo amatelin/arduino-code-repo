@@ -85,6 +85,7 @@ void Display::printOpen()
 		clearDigits();
 		activateDigit(i);
 		showNumber(openChar[i]);
+		clearDigits();
 	}
 }
 
