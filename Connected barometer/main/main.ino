@@ -13,7 +13,7 @@
 // Defining pins for our sensors.
 // BMP180 uses a specific protocol so no need to worry about it.
 #define DHTPIN 5
-#define LUXPIN A0
+#define LIGHTPIN A0
 #define DHTTYPE DHT11
 
 #define ALTITUDE 147 // altitude used to compute pressure. 147 for Montreal
@@ -22,27 +22,93 @@
 #define SSID ""
 #define PASS ""
 #define IP "api.thingspeak.com"
+#define PORT = 80
 #define API_KEY = ""
+
+// Defining delay time between each loop
+#define WAIT = 30000;
+
+// Enable debug mode if true (will print debug messages to Serial)
+bool debug = false;
 
 // Instantiating sensors
 DHT dht(DHTPIN, DHTTYPE);
 SFE_BMP180 pressure;
 
-SoftwareSerial esp8266(8,9);
+
+Esp8266 esp8266(8, 9, false);
+//SoftwareSerial esp8266(8,9);
 
 
 void setup()
 {
-
-	  /* add setup code here, setup code runs once when the processor starts */
+	// Try to connect Esp. If it is non-responding, reset
+	esp8266.begin();
+	if (esp8266.isOk()){
+		esp8266.connectWifi(SSID, PASS);
+	} else {
+		esp8266.reset();
+	}
+	
+	// Start sensors
+	pressure.begin();
+	dht.begin();
 
 }
 
 void loop()
 {
+	int l;
+	float h;
+	double t, p0, p1;
+	// Read luminosity value
+	l = getLuminosity();
+	// Read values from sensor DHT11
+	h = dht.readHumidity();
+	// Read values from sensor BMP180
+	t = readBMPTemp();
+	if (t=0) // if we got a valid temperature, go for pressure
+	{
+		double p0 = readBMPPressure(t);
+		if (p0!=0) // if we got a valid pressure, go for adjusted pressure
+		{
+			p1 = pressure.sealevel(p0,ALTITUDE); // removing the effects of altitude on pressure reading
+		}
+	}
+	
+	if (!esp8266.isBusy())
+	{
+		if (esp8266.isConnected())
+		{
+			pushData(t, h, p1, l);
+		} else 
+		{
+			status = esp8266.connectWifi(SSID, PASS);
+			if (!status) esp8266.reset();
+		}
+	}
 
-	  /* add main program code here, this code starts again each time it ends */
+	
+	delay(WAIT);
+}
 
+void pushData(String temp, String humid, String pres, String lum)
+{
+	String call = "GET /update?key=" + API_KEY;
+	call += "&field1=";
+	call += temp;
+	call += "&field2=";
+	call += humid;
+	call += "&field3=";
+	call += pres;
+	call += "&field4=";
+	call += lum;
+	call += "\r\n";
+	
+	status = esp8266.openConnection(IP, PORT);
+	if (!status) return;
+	
+	esp8266.send(call);
 }
 
 double readBMPTemp() {

@@ -6,6 +6,7 @@ ehthumbs.db
 Desktop.ini
 */Visual Micro/*
 */src/*
+Connected barometer/main/Debug
 project_apb/project_apb/Debug
 project_apb/project_apb/Visual Micro
 project_apb/Lib
@@ -44,3 +45,4 @@ Icon
 *.atsuo
 *.atsln
 wall_avoiding_robot/Robot2.0/Main/Visual Micro/.Main.vsarduino.h
+online_environmental_data_logger/esp8266_wifi_connect/esp8266_wifi_connect.ino
