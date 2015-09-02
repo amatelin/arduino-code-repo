@@ -11,7 +11,7 @@
 
 #define ALTITUDE 147 // altitude used to compute pressure. 147 for Montreal
 
-// Instanciating sensors
+// Instantiating sensors
 DHT dht(DHTPIN, DHTTYPE);
 SFE_BMP180 pressure;
 
