@@ -8,7 +8,8 @@
 
 #ifndef __ESP8266_H__
 #define __ESP8266_H__
-
+#include "Arduino.h"
+#include <SoftwareSerial.h>
 
 class Esp8266
 {
@@ -16,26 +17,31 @@ class Esp8266
 public:
 protected:
 private:
+	SoftwareSerial espSerial;
+	bool debugMode;
 
 //functions
 public:
-	Esp8266();
+	Esp8266(int, int, bool);
 	~Esp8266();
 	
-	begin();
-	void reset();
+	void begin();
+	bool reset();
+	
 	bool isOk();
 	bool isBusy();
-	bool isConnected();
-	bool connectWifi(String, String);
-	bool openConnection(String, int);
+	bool isConnected(char[]);
+	bool connectWifi(char[], String);
+	bool openTCPConnection(String, String);
+	bool closeTCPConnection();
 	void send(String);
+	void printDebug(String);
 	
 protected:
 private:
-	Esp8266( const Esp8266 &c );
-	Esp8266& operator=( const Esp8266 &c );
+	bool checkResponse(char[], int);
+	
 
-}; //Esp8266
+}; 
 
 #endif //__ESP8266_H__

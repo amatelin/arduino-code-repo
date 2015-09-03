@@ -34,8 +34,7 @@ void loop() {
   if (t1!=0)
   {
     double p0 = readBMPPressure(t1);
-    memcpy(&p0, &p01, sizeof(int)); 
-    Serial.println(p01);
+    p01 = p0;
     if (p0!=0){
        p1 = pressure.sealevel(p0,ALTITUDE); // removing the effects of altitude on pressure reading
     }

@@ -9,6 +9,7 @@
 #include <SFE_BMP180.h>
 #include <Wire.h>
 #include <SoftwareSerial.h>
+#include "Esp8266.h"
 
 // Defining pins for our sensors.
 // BMP180 uses a specific protocol so no need to worry about it.
@@ -22,11 +23,11 @@
 #define SSID ""
 #define PASS ""
 #define IP "api.thingspeak.com"
-#define PORT = 80
-#define API_KEY = ""
+#define PORT "80"
+#define API_KEY ""
 
 // Defining delay time between each loop
-#define WAIT = 30000;
+#define WAIT 30000
 
 // Enable debug mode if true (will print debug messages to Serial)
 bool debug = false;
@@ -36,16 +37,19 @@ DHT dht(DHTPIN, DHTTYPE);
 SFE_BMP180 pressure;
 
 
-Esp8266 esp8266(8, 9, false);
-//SoftwareSerial esp8266(8,9);
+Esp8266 esp8266(8, 9, debug);
+//SoftwareSerial ss(2,3);
 
 
 void setup()
 {
-	// Try to connect Esp. If it is non-responding, reset
+	// Begin communication with esp
 	esp8266.begin();
+	//Serial.begin(115200);
+	
+	// Try to connect Esp. If it is non-responding, reset
 	if (esp8266.isOk()){
-		esp8266.connectWifi(SSID, PASS);
+		if (!esp8266.isConnected(SSID)) esp8266.connectWifi(SSID, PASS);;		
 	} else {
 		esp8266.reset();
 	}
@@ -58,43 +62,55 @@ void setup()
 
 void loop()
 {
+	
 	int l;
 	float h;
-	double t, p0, p1;
-	// Read luminosity value
-	l = getLuminosity();
+	//double t, p0, p1;
+
 	// Read values from sensor DHT11
 	h = dht.readHumidity();
 	// Read values from sensor BMP180
-	t = readBMPTemp();
-	if (t=0) // if we got a valid temperature, go for pressure
-	{
-		double p0 = readBMPPressure(t);
-		if (p0!=0) // if we got a valid pressure, go for adjusted pressure
-		{
-			p1 = pressure.sealevel(p0,ALTITUDE); // removing the effects of altitude on pressure reading
-		}
-	}
 	
+	 // Read values from sensor BMP180
+	 double t1, p0, p1;
+	 
+	 t1 = readBMPTemp();
+	 if (t1!=0)
+	 {
+		 p0 = readBMPPressure(t1);
+		 if (p0!=0){
+			 p1 = pressure.sealevel(p0, ALTITUDE); // removing the effects of altitude on pressure reading
+		 }
+	 }
+	
+	// Read luminosity value
+	l = getLuminosity();
+	
+
+	// Push data online, checking if esp is in a valid state beforehand
 	if (!esp8266.isBusy())
 	{
-		if (esp8266.isConnected())
+		if (esp8266.isConnected(SSID))
 		{
-			pushData(t, h, p1, l);
+			pushData(String(t1), String(h), String(p1), String(l));
 		} else 
 		{
-			status = esp8266.connectWifi(SSID, PASS);
+			bool status = esp8266.connectWifi(SSID, PASS);
 			if (!status) esp8266.reset();
 		}
 	}
 
 	
+	// Wait for predefined delay before next measurements
 	delay(WAIT);
 }
 
+
 void pushData(String temp, String humid, String pres, String lum)
 {
-	String call = "GET /update?key=" + API_KEY;
+	String call;
+	call += "GET /update?key="; 
+	call += API_KEY;
 	call += "&field1=";
 	call += temp;
 	call += "&field2=";
@@ -105,7 +121,7 @@ void pushData(String temp, String humid, String pres, String lum)
 	call += lum;
 	call += "\r\n";
 	
-	status = esp8266.openConnection(IP, PORT);
+	bool status = esp8266.openTCPConnection(IP, PORT);
 	if (!status) return;
 	
 	esp8266.send(call);
@@ -160,7 +176,8 @@ double readBMPPressure(double temp) {
 		// Function returns 1 if successful, 0 if failure.
 		
 		status = pressure.getPressure(P,temp);
-		return (status!=0 ? P : 0);
+		return P;
+		//return (status!=0 ? P : 0);
 	}
 }
 
