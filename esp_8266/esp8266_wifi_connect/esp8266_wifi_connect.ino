@@ -1,8 +1,10 @@
 #include<stdlib.h>
 #include <SoftwareSerial.h>
-#define SSID ""
-#define PASS ""
+#define SSID "BELL810"
+#define PASS "D9FFCC94"
+
 SoftwareSerial esp8266(2, 3); // RX, TX
+String open_tcp = "AT+CIPSTART=1,\"TCP\",\"api.thingspeak.com\",80";
 
 void setup()
 {
@@ -14,10 +16,25 @@ void setup()
     Serial.println("RECEIVED: OK");
     connectWiFi();
   }
+  
+  delay(5000);
+  sendDebug(open_tcp);
+  delay(5000);
 }
 
 void loop(){
 
+if(esp8266.available()) // check if the esp is sending a message 
+  {
+    while(esp8266.available())
+    {
+      // The esp has data so display its output to the serial window 
+      char c = esp8266.read(); // read the next character.
+      Serial.write(c);
+    }  
+  }
+  
+ 
 }
 
 void sendDebug(String cmd){
@@ -28,6 +45,8 @@ void sendDebug(String cmd){
  
 boolean connectWiFi(){
   esp8266.println("AT+CWMODE=1");
+  delay(2000);
+  esp8266.println("AT+CIPMUX=1");
   delay(2000);
   String cmd="AT+CWJAP=\"";
   cmd+=SSID;
