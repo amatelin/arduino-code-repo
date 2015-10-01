@@ -1,3 +1,4 @@
+#include <MyoController.h>
 /*
  * Robot.ino
  *
@@ -12,13 +13,17 @@
 #include "Robot.h"
 
 Robot robot;
+MyoController myo = MyoController();
 
 void setup()
 {
 	robot.initialize();
+	myo.initMyo();
 }
 
 void loop()
 {	
 	robot.run();
+	myo.updatePose();
+	robot.communicate(myo.getCurrentPose());
 }

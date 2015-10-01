@@ -23,7 +23,7 @@ class Robot
 
 	
 		void run();
-		void communicate();
+		void communicate(int);
 		
 		void forward();
 		void backward();
@@ -44,7 +44,7 @@ class Robot
 		state_t state;
 		int currentDirection;
 		
-		static const int defaultSpeed = 200;
+		static const int defaultSpeed = 150;
 		
 		unsigned long startTime;
 		int i;

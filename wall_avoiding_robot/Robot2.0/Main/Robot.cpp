@@ -10,6 +10,7 @@
 #include "PinRegistry.h"
 #include "Direction.h"
 #include "math.h"
+#include "MyoController/MyoController.h"
 
 
 Robot::Robot()
@@ -37,68 +38,72 @@ void Robot::run()
 {
 	unsigned long currentTime = millis();
 	unsigned long elapsedTime = currentTime - startTime;
-	communicate();
-	/*
-	switch (state)
-	{
-		case stateStopped:
-			if (elapsedTime>=5000)
-			{
-				
-				leftMotor.setDirection(Direction::FORWARD);
-				rightMotor.setDirection(Direction::FORWARD);
-				leftMotor.setSpeed(190);
-				rightMotor.setSpeed(200);
-				time_since_last_instruction = 0;
-				last_instruction_time = millis();
-						
-				state = stateRunning;
-			}
-			break;
-		case stateRunning:
-			distance = distanceSensor.getDistance();
-			5time_since_last_instruction =millis()-last_instruction_time;
-			Serial.println(distance);
-			Serial.println(time_since_last_instruction);
 
-			if (distance<35&time_since_last_instruction>250)
-			{
-				int start_time = millis();		
-				int timeVar = 0;
-				leftMotor.setDirection(Direction::BACKWARD);
-				rightMotor.setDirection(Direction::BACKWARD);
-				while (timeVar<750)
-				{
-					timeVar = millis()-start_time;
-				}
-				timeVar = 0;
-				leftMotor.setDirection(Direction::BACKWARD);
-				rightMotor.setDirection(Direction::FORWARD);
-				while (timeVar<1485)
-				{
-					timeVar = millis()-start_time;
-				}
-				leftMotor.setDirection(Direction::FORWARD);
-				rightMotor.setDirection(Direction::FORWARD);
-				
-				
-				time_since_last_instruction = 0;
-				last_instruction_time = millis();
-			}
-			else if(distance>35)
-			{
-				Serial.println("F");
-				leftMotor.setDirection(Direction::FORWARD);
-				rightMotor.setDirection(Direction::FORWARD);
-				time_since_last_instruction=0;
-				last_instruction_time = millis();
-			}
-		}*/
+	
+	distance = distanceSensor.getDistance();
+	time_since_last_instruction =millis()-last_instruction_time;
+	Serial.println(distance);
+	Serial.println(time_since_last_instruction);
+
+	if (distance<35&time_since_last_instruction>250)
+	{
+		int start_time = millis();
+		int timeVar = 0;
+		leftMotor.setDirection(Direction::BACKWARD);
+		rightMotor.setDirection(Direction::BACKWARD);
+		while (timeVar<750)
+		{
+			timeVar = millis()-start_time;
+		}
+		timeVar = 0;
+		leftMotor.setDirection(Direction::BACKWARD);
+		rightMotor.setDirection(Direction::FORWARD);
+		while (timeVar<1485)
+		{
+			timeVar = millis()-start_time;
+		}
+		leftMotor.setDirection(Direction::FORWARD);
+		rightMotor.setDirection(Direction::FORWARD);
+		
+		
+		time_since_last_instruction = 0;
+		last_instruction_time = millis();
+	}
+	else if(distance>35)
+	{
+		Serial.println("F");
+		leftMotor.setDirection(Direction::FORWARD);
+		rightMotor.setDirection(Direction::FORWARD);
+		time_since_last_instruction=0;
+		last_instruction_time = millis();
+	}
 }
 
-void Robot::communicate()
+void Robot::communicate(int pose)
 {
-	int code;
+	
+	switch (pose ) {
+
+    case rest:
+      break;
+    case fist:
+		backward();
+      break;
+    case waveIn:
+		turnRight();
+      break;
+    case waveOut:
+		turnLeft();
+      break;
+    case fingersSpread:
+		start();
+		forward();
+      break;
+    case doubleTap:
+		stop();
+      break;
+   } 
+	/*int code;
 	if (Serial.available()>0)
 	{
 		if (expectSpeed==true)
@@ -136,7 +141,7 @@ void Robot::communicate()
 		case 'l':
 			turnLeft();
 			break;
-	}
+	}*/
 }
 
 void Robot::forward()
@@ -153,12 +158,14 @@ void Robot::backward()
 
 void Robot::start()
 {
+	state = stateRunning;
 	leftMotor.setSpeed(defaultSpeed);
 	rightMotor.setSpeed(defaultSpeed);	
 }
 
 void Robot::stop()
 {
+	state = stateStopped;
 	leftMotor.setSpeed(0);
 	rightMotor.setSpeed(0);
 }
